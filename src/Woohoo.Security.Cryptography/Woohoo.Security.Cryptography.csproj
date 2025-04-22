@@ -16,7 +16,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>hash;checksum;calculator;crc32;cryptography</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 

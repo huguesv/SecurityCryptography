@@ -77,3 +77,20 @@ using Woohoo.Security.Cryptography;
 
 string crc32Hex = HashCalculator.HexToString(crc32Hash);
 ```
+
+## XOR Transform
+
+To encrypt/decrypt a byte array using a key, you can use the `XorTransform`
+class, which implements the `System.Security.Cryptography.ICryptoTransform` interface.
+
+```csharp
+using Woohoo.Security.Cryptography;
+
+byte[] key = [0x41, 0x76, 0x69, 0x73, 0x20, 0x44, 0x75, 0x72, 0x67, 0x61, 0x6e];
+byte[] data = [0x00, 0x00, 0x05, 0x01, 0x02, 0x03, 0x01, 0x02, 0x03, 0x05, 0x00, 0x00];
+
+using (var transform = new XorTransform(key))
+{
+    byte[] xor = transform.TransformFinalBlock(data, 0, data.Length);
+}
+```
