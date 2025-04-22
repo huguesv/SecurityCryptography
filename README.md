@@ -14,7 +14,7 @@ using Woohoo.Security.Cryptography;
 
 HashAlgorithm algorithm = CRC32.Create();
 
-byte[] data = new byte[] { 1, 2, 3, 4, 5 };
+byte[] data = [1, 2, 3, 4, 5];
 byte[] hash = algorithm.ComputeHash(data);
 ```
 
@@ -45,7 +45,7 @@ using Woohoo.Security.Cryptography;
 
 string path = "path/to/your/file.txt";
 
-HashCalculatorResult result = new HashCalculator().Calculate(new string[] { "CRC32", "MD5", "SHA1" }, path);
+HashCalculatorResult result = new HashCalculator().Calculate(["CRC32", "MD5", "SHA1"], path);
 byte[] crc32Hash = result.Checksums["CRC32"];
 byte[] md5Hash = result.Checksums["MD5"];
 byte[] sha1Hash = result.Checksums["SHA1"];
@@ -65,7 +65,7 @@ string path = "path/to/your/file.txt";
 
 HashCalculator calc = new HashCalculator();
 calc.Progress += ProgressHandler;
-calc.Calculate(new string[] { "CRC32", "MD5", "SHA1" }, path);
+calc.Calculate(["CRC32", "MD5", "SHA1"], path);
 ```
 
 To abort a calculation, you can call the `Cancel` method on the `HashCalculator` instance.
