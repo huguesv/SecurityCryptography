@@ -1,4 +1,8 @@
 # Woohoo.Security.Cryptography
+
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/huguesv/SecurityCryptography/build-and-test.yml)
+![NuGet Version](https://img.shields.io/nuget/v/Woohoo.Security.Cryptography)
+
 Library of hash algorithms and utilities for .NET.
 
 ## CRC32
