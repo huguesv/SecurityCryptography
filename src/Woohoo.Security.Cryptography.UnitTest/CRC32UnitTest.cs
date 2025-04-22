@@ -17,11 +17,10 @@ public class CRC32UnitTest
     [Fact]
     public void ComputeHash()
     {
-        // Cannot use DataRow with byte[] in MSTest.TestAdapter >= 2.2.4
         var data = new Tuple<byte[], byte[]>[]
         {
-            Tuple.Create(new byte[] { 0x00 }, new byte[] { 0xd2, 0x02, 0xef, 0x8d }),
-            Tuple.Create(new byte[] { 0x10, 0x20, 0x30, 0x40, 0x50 }, new byte[] { 0xb9, 0x89, 0x34, 0xc0 }),
+            Tuple.Create<byte[], byte[]>([0x00], [0xd2, 0x02, 0xef, 0x8d]),
+            Tuple.Create<byte[], byte[]>([0x10, 0x20, 0x30, 0x40, 0x50], [0xb9, 0x89, 0x34, 0xc0]),
         };
 
         foreach (var current in data)

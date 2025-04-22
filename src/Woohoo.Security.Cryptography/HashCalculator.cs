@@ -33,14 +33,7 @@ public class HashCalculator
     {
         Requires.NotNull(data);
 
-        var text = new StringBuilder();
-
-        foreach (var b in data)
-        {
-            _ = text.Append(b.ToString("x2", CultureInfo.InvariantCulture));
-        }
-
-        return text.ToString();
+        return BitConverter.ToString(data).Replace("-", string.Empty).ToLowerInvariant();
     }
 
     /// <summary>
