@@ -1,0 +1,38 @@
+﻿// Copyright (c) Hugues Valois. All rights reserved.
+// Licensed under the MIT license. See LICENSE in the project root for license information.
+
+namespace Woohoo.Security.Cryptography.UnitTest;
+
+using System;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Woohoo.Security.Cryptography;
+
+[TestClass]
+public class CRC32UnitTest
+{
+    [TestMethod]
+    public void Create()
+    {
+        var actual = CRC32.Create();
+        _ = actual.Should().NotBeNull();
+    }
+
+    [TestMethod]
+    public void ComputeHash()
+    {
+        // Cannot use DataRow with byte[] in MSTest.TestAdapter >= 2.2.4
+        var data = new Tuple<byte[], byte[]>[]
+        {
+            Tuple.Create(new byte[] { 0x00 }, new byte[] { 0xd2, 0x02, 0xef, 0x8d }),
+            Tuple.Create(new byte[] { 0x10, 0x20, 0x30, 0x40, 0x50 }, new byte[] { 0xb9, 0x89, 0x34, 0xc0 }),
+        };
+
+        foreach (var current in data)
+        {
+            var algorithm = CRC32.Create();
+            var actual = algorithm.ComputeHash(current.Item1);
+            _ = actual.Should().BeEquivalentTo(current.Item2);
+        }
+    }
+}

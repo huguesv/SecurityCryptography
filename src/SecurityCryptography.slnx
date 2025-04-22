@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../LICENSE" />
+    <File Path="../README.md" />
+    <File Path="Common/Common.AssemblyInfo.cs" />
+    <File Path="Common/Requires.cs" />
+    <File Path="Common/stylecop.json" />
+    <File Path="Common/ValidatedNotNullAttribute.cs" />
+  </Folder>
+  <Project Path="Woohoo.Security.Cryptography.UnitTest/Woohoo.Security.Cryptography.UnitTest.csproj" />
+  <Project Path="Woohoo.Security.Cryptography/Woohoo.Security.Cryptography.csproj" />
+</Solution>
