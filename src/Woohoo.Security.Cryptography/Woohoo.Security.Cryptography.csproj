@@ -4,7 +4,6 @@
     <TargetFrameworks>net6.0;net47;netstandard2.0;netstandard2.1</TargetFrameworks>
     <Nullable>enable</Nullable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
