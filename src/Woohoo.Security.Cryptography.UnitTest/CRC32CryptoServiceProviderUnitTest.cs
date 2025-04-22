@@ -3,14 +3,11 @@
 
 namespace Woohoo.Security.Cryptography.UnitTest;
 
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Woohoo.Security.Cryptography;
 
-[TestClass]
 public class CRC32CryptoServiceProviderUnitTest
 {
-    [TestMethod]
+    [Fact]
     public void Create()
     {
         var actual = CRC32CryptoServiceProvider.Create();

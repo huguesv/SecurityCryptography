@@ -3,22 +3,18 @@
 
 namespace Woohoo.Security.Cryptography.UnitTest;
 
-using System;
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Woohoo.Security.Cryptography;
 
-[TestClass]
 public class CRC32UnitTest
 {
-    [TestMethod]
+    [Fact]
     public void Create()
     {
         var actual = CRC32.Create();
         _ = actual.Should().NotBeNull();
     }
 
-    [TestMethod]
+    [Fact]
     public void ComputeHash()
     {
         // Cannot use DataRow with byte[] in MSTest.TestAdapter >= 2.2.4
