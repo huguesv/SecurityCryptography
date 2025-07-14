@@ -107,6 +107,7 @@ public class HashCalculator
             long offset = 0;
             var progress = 0;
             var startTime = DateTime.Now;
+            var data = new byte[BlockLength];
 
             this.Progress?.Invoke(this, new HashCalculatorProgressEventArgs(filePath, 0, 0, length));
 
@@ -120,11 +121,10 @@ public class HashCalculator
                     }
                 }
 
-                var data = new byte[count];
                 var read = stream.Read(data, 0, count);
                 if (read == count)
                 {
-                    _ = Parallel.ForEach(algorithms, algo => algo.TransformBlock(data, 0, data.Length, null, 0));
+                    _ = Parallel.ForEach(algorithms, algo => algo.TransformBlock(data, 0, count, null, 0));
 
                     offset += count;
                     remain = length - offset;
@@ -147,7 +147,7 @@ public class HashCalculator
 
             foreach (var algo in algorithms)
             {
-                _ = algo.TransformFinalBlock(new byte[0], 0, 0);
+                _ = algo.TransformFinalBlock([], 0, 0);
                 result.Checksums.Add(algorithmNames[algo], (byte[])(algo.Hash?.Clone() ?? throw new NotSupportedException($"Unable to calculate hash for algorithm: {algo.GetType().Name}")));
             }
 
