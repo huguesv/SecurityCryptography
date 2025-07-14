@@ -7,6 +7,7 @@
     <File Path="Common/stylecop.json" />
     <File Path="Common/ValidatedNotNullAttribute.cs" />
   </Folder>
+  <Project Path="Woohoo.Security.Cryptography.Benchmarks/Woohoo.Security.Cryptography.Benchmarks.csproj" Id="e2063771-c2de-4f87-8b76-9447eaa5f799" />
   <Project Path="Woohoo.Security.Cryptography.UnitTest/Woohoo.Security.Cryptography.UnitTest.csproj" />
   <Project Path="Woohoo.Security.Cryptography/Woohoo.Security.Cryptography.csproj" />
 </Solution>
