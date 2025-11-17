@@ -4,6 +4,7 @@
 namespace Woohoo.Security.Cryptography.Benchmarks;
 
 using System;
+using System.IO;
 using BenchmarkDotNet.Attributes;
 
 [MemoryDiagnoser(true)]

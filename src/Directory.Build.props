@@ -1,19 +1,17 @@
 <Project>
 
   <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors Condition="'$(TreatWarningsAsErrors)' == ''">true</TreatWarningsAsErrors>
     <NoWarn>CS1591;SA1600;SA1633;SA0001</NoWarn>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <OutputPath>$(MSBuildThisFileDirectory)..\bin\$(Configuration)\$(TargetFramework)\$(MSBuildProjectName)</OutputPath>
-    <OutDir>$(OutputPath)</OutDir>
-    <UseCommonOutputDirectory>False</UseCommonOutputDirectory>
     <SignAssembly>false</SignAssembly>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
   </PropertyGroup>
 
   <ItemGroup>
