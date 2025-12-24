@@ -65,10 +65,39 @@ string path = "path/to/your/file.txt";
 
 HashCalculator calc = new HashCalculator();
 calc.Progress += ProgressHandler;
-calc.Calculate(["CRC32", "MD5", "SHA1"], path);
+HashCalculatorResult result = calc.Calculate(["CRC32", "MD5", "SHA1"], path);
 ```
 
 To abort a calculation, you can call the `Cancel` method on the `HashCalculator` instance.
+
+An asynchronous `CalculateAsync` static method is available, which accepts a cancellation token.
+
+```csharp
+using Woohoo.Security.Cryptography;
+
+string path = "path/to/your/file.txt";
+
+HashCalculatorResult result = await HashCalculator.CalculateAsync(["CRC32", "MD5", "SHA1"], path, CancellationToken.None);
+```
+
+There are overloads to pass in either a stream or a file path.
+
+There are also overloads to pass in a progress callback.
+
+```csharp
+using Woohoo.Security.Cryptography;
+
+void ProgressHandler(HashCalculatorProgress e)
+{
+    Console.WriteLine($"{e.FilePath}: {e.ProgressPercentage} percent done. {e.ProgressBytes} of {e.Length} bytes.");
+}
+
+string path = "path/to/your/file.txt";
+
+HashCalculatorResult result = await HashCalculator.CalculateAsync(["CRC32", "MD5", "SHA1"], path, ProgressHandler, CancellationToken.None);
+
+```
+
 
 To convert the byte array to a hexadecimal string, you can use the static `HexToString` method.
 

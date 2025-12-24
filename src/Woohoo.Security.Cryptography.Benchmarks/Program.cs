@@ -3,12 +3,22 @@
 
 namespace Woohoo.Security.Cryptography.Benchmarks;
 
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
+using BenchmarkDotNet.Toolchains.InProcess.Emit;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        var summary = BenchmarkRunner.Run<HashCalculatorBenchmarks>();
+        //var config = DefaultConfig.Instance
+        //    .AddJob(Job.MediumRun
+        //        .WithLaunchCount(1)
+        //        .WithToolchain(InProcessEmitToolchain.Instance)); // Or InProcessNoEmitToolchain.Instance
+
+        //_ = BenchmarkRunner.Run<HashCalculatorBenchmarks>(config);
+
+        _ = BenchmarkRunner.Run<HashCalculatorBenchmarks>();
     }
 }

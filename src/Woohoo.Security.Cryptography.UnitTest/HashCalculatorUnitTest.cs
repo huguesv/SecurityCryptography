@@ -26,6 +26,19 @@ public class HashCalculatorUnitTest
     }
 
     [Fact]
+    public async Task CalculateAsyncFromPath()
+    {
+        var path = "HashCalculatorData.bin";
+        File.WriteAllBytes(path, InputData);
+
+        var actual = await HashCalculator.CalculateAsync(["CRC32", "MD5", "SHA1"], path, CancellationToken.None);
+        _ = actual.Should().NotBeNull();
+        _ = actual.Checksums["CRC32"].Should().BeEquivalentTo(ExpectedCrc32);
+        _ = actual.Checksums["MD5"].Should().BeEquivalentTo(ExpectedMd5);
+        _ = actual.Checksums["SHA1"].Should().BeEquivalentTo(ExpectedSha1);
+    }
+
+    [Fact]
     public void CalculateFromStream()
     {
         var stream = new MemoryStream(InputData);
@@ -35,6 +48,23 @@ public class HashCalculatorUnitTest
         using (stream)
         {
             var actual = new HashCalculator().Calculate(["CRC32", "MD5", "SHA1"], stream, stream.Length);
+            _ = actual.Should().NotBeNull();
+            _ = actual.Checksums["CRC32"].Should().BeEquivalentTo(ExpectedCrc32);
+            _ = actual.Checksums["MD5"].Should().BeEquivalentTo(ExpectedMd5);
+            _ = actual.Checksums["SHA1"].Should().BeEquivalentTo(ExpectedSha1);
+        }
+    }
+
+    [Fact]
+    public async Task CalculateAsyncFromStream()
+    {
+        var stream = new MemoryStream(InputData);
+        stream.Flush();
+        _ = stream.Seek(0, SeekOrigin.Begin);
+
+        using (stream)
+        {
+            var actual = await HashCalculator.CalculateAsync(["CRC32", "MD5", "SHA1"], stream, stream.Length, CancellationToken.None);
             _ = actual.Should().NotBeNull();
             _ = actual.Checksums["CRC32"].Should().BeEquivalentTo(ExpectedCrc32);
             _ = actual.Checksums["MD5"].Should().BeEquivalentTo(ExpectedMd5);
