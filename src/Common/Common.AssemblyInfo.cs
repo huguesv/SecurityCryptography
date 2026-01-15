@@ -5,8 +5,8 @@ using System.Reflection;
 
 [assembly: AssemblyCompany("Hugues Valois")]
 [assembly: AssemblyProduct("Woohoo.Security.Cryptography")]
-[assembly: AssemblyCopyright("Copyright (c) Hugues Valois 2008-2025")]
+[assembly: AssemblyCopyright("Copyright (c) Hugues Valois 2008-2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("0.4.0.0")]
-[assembly: AssemblyFileVersion("0.4.0.0")]
+[assembly: AssemblyVersion("0.5.0.0")]
+[assembly: AssemblyFileVersion("0.5.0.0")]
