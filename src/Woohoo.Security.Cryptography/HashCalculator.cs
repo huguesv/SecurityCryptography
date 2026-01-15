@@ -48,17 +48,14 @@ public class HashCalculator
     public static Task<HashCalculatorResult> CalculateAsync(string[] hashNames, string path, CancellationToken ct)
         => CalculateAsync(hashNames, path, null, ct);
 
-    public static Task<HashCalculatorResult> CalculateAsync(string[] hashNames, string path, Action<HashCalculatorProgress>? progressHandler, CancellationToken ct)
+    public static async Task<HashCalculatorResult> CalculateAsync(string[] hashNames, string path, Action<HashCalculatorProgress>? progressHandler, CancellationToken ct)
     {
         Requires.NotNull(hashNames);
         Requires.NotNullOrEmpty(path);
 
         var info = new FileInfo(path);
-
-        using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-        {
-            return CalculateAsync(hashNames, stream, info.Length, path, progressHandler, ct);
-        }
+        var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
+        return await CalculateAsync(hashNames, stream, info.Length, path, progressHandler, ct);
     }
 
     /// <summary>
@@ -84,11 +81,8 @@ public class HashCalculator
         Requires.NotNullOrEmpty(path);
 
         var info = new FileInfo(path);
-
-        using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-        {
-            return this.Calculate(hashNames, stream, info.Length, path);
-        }
+        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
+        return this.Calculate(hashNames, stream, info.Length, path);
     }
 
     /// <summary>
