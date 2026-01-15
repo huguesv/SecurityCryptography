@@ -15,7 +15,7 @@ public class HashCalculatorUnitTest
     [Fact]
     public void CalculateFromPath()
     {
-        var path = "HashCalculatorData.bin";
+        var path = "HashCalculatorData-CalculateFromPath.bin";
         File.WriteAllBytes(path, InputData);
 
         var actual = new HashCalculator().Calculate(["CRC32", "MD5", "SHA1"], path);
@@ -28,7 +28,7 @@ public class HashCalculatorUnitTest
     [Fact]
     public async Task CalculateAsyncFromPath()
     {
-        var path = "HashCalculatorData.bin";
+        var path = "HashCalculatorData-CalculateAsyncFromPath.bin";
         File.WriteAllBytes(path, InputData);
 
         var actual = await HashCalculator.CalculateAsync(["CRC32", "MD5", "SHA1"], path, CancellationToken.None);
