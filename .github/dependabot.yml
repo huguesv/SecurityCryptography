@@ -5,6 +5,12 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    test:
+      patterns:
+        - "xunit*"
+        - "Microsoft.NET.Test.Sdk"
+        - "AwesomeAssertions*"
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
