@@ -89,11 +89,11 @@ public sealed class CRC32CryptoServiceProvider : CRC32
     }
 
     /// <inheritdoc/>
-    protected override void HashCore(byte[] array, int start, int size)
+    protected override void HashCore(byte[] array, int ibStart, int cbSize)
     {
         // Performance of this function is very significant,
         // the calculation must be as efficient as possible.
-        for (var i = start; i < start + size; ++i)
+        for (var i = ibStart; i < ibStart + cbSize; ++i)
         {
             this.crc = (this.crc >> 8) ^ Table[(this.crc & 0xff) ^ array[i]];
         }
